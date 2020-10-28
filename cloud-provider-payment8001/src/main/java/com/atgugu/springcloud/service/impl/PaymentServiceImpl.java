@@ -4,15 +4,18 @@ import com.atgugu.springcloud.dao.PaymentDao;
 import com.atgugu.springcloud.entities.Payment;
 import com.atgugu.springcloud.service.PaymentService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
 @Service
+@Transactional
 public class PaymentServiceImpl implements PaymentService {
     @Resource
     private PaymentDao paymentDao;
 
     @Override
+    @Transactional
     public int create(Payment payment) {
         return paymentDao.create(payment);
     }
